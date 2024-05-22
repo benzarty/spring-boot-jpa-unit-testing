@@ -1,0 +1,17 @@
+server:
+    port: 8081
+spring:
+    datasource:
+        password: admin
+        url: jdbc:postgresql://localhost:5432/Junit1
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                jdbc:
+                    lob:
+                        non_contextual_creation: true
+

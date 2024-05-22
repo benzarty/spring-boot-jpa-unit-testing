@@ -22,7 +22,14 @@ import in.bushansirgur.springbootjunit.repository.MovieRepository;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class MoviesIntegrationTest {
-	
+
+
+//	integration test is a type of test that focuses on verifying the interactions and collaboration between different
+//	components within a Spring application. Integration tests ensure that various parts of the application work together
+//	as expected when they are integrated into a cohesive system
+
+	//ma3adech testi just 3la controller w service kol wa7da wa7adeha , yeged flow kol => yeched akther wa9et
+
 	@LocalServerPort
 	private int port;
 	

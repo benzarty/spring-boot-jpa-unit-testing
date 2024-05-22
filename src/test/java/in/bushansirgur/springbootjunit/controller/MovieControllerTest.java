@@ -33,12 +33,21 @@ import in.bushansirgur.springbootjunit.service.MovieService;
 
 @WebMvcTest
 public class MovieControllerTest {
-	
+
+//	is used to inject a bean into a test class
 	@Autowired
 	private MockMvc mockMvc;
+	//MockMvc is a Spring test module that provides a way to test Spring MVC controllers without starting a full HTTP server.
 
 	@MockBean
 	private MovieService movieService;
+	// Instead of using the real implementations
+	// of these services, you can use @MockBean to replace them with mock versions.
+
+
+	//When you use @Autowired instead of @MockBean, you are injecting the actual Spring bean into your test context.
+	// This means that the real implementation of the bean will be used during the test,
+	// and any interactions with that bean will invoke the actual methods and logic.
 	
 	@Autowired
 	private ObjectMapper objectMapper;
@@ -73,7 +82,7 @@ public class MovieControllerTest {
 		.andExpect(jsonPath("$.name", is(avatarMovie.getName())))
 		.andExpect(jsonPath("$.genera", is(avatarMovie.getGenera())))
 		.andExpect(jsonPath("$.releaseDate", is(avatarMovie.getReleaseDate().toString())));
-			
+		// checks the value of a JSON property
 	}
 	
 	@Test
@@ -105,6 +114,8 @@ public class MovieControllerTest {
 	void shouldDeleteMovie() throws Exception {
 		
 		doNothing().when(movieService).deleteMovie(anyLong());
+
+		// donothing : It's often used for methods that return void or for methods where you don't want to perform any action during testing.
 		
 		this.mockMvc.perform(delete("/movies/{id}", 1L))
 			.andExpect(status().isNoContent());
